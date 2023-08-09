@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:to_do_list/app/data/models/task.dart';
 import 'package:to_do_list/app/data/service/storage/repository.dart';
@@ -7,6 +8,13 @@ class HomeController extends GetxController {
   TaskRepository taskRepository;
 
   HomeController({required this.taskRepository});
+
+  /*
+  * Dialog Form need a key so need to create on controller*/
+  final formKey = GlobalKey<FormState>();
+  final editController = TextEditingController();
+
+
 
   // start
   /*
@@ -27,4 +35,5 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
+
 }

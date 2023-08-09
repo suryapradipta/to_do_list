@@ -24,7 +24,7 @@ class HomePage extends GetView<HomeController> {
             crossAxisCount: 2,
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),
-            children: [AddCard( )],
+            children: [AddCard()],
           ),
         ],
       )),
