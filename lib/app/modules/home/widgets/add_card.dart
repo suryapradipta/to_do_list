@@ -43,7 +43,33 @@ class AddCard extends StatelessWidget {
                       },
                     ),
                   ),
-              
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0.wp),
+                    child: Wrap(
+                      spacing: 2.0.wp,
+                      children: icons
+                          .map((e) => Obx(() {
+                                final index = icons.indexOf(e);
+                                return ChoiceChip(
+                                  selectedColor: Colors.grey[200],
+                                  pressElevation: 0,
+                                  backgroundColor: Colors.white,
+                                  label: e,
+                                  // if the index is the same, the index will be highlight
+                                  selected:
+                                      homeController.chipIndex.value == index,
+                                  // this check if the index is selected
+                                  onSelected: (bool selected) {
+                                    // if selected others, this will set the value of index of selected icon on dialog
+                                    // if true, the selected is index otherwise 0
+                                    homeController.chipIndex.value =
+                                        selected ? index : 0;
+                                  },
+                                );
+                              }))
+                          .toList(),
+                    ),
+                  )
                 ],
               ),
             ),

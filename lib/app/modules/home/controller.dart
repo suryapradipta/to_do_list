@@ -15,7 +15,6 @@ class HomeController extends GetxController {
   final editController = TextEditingController();
 
 
-
   // start
   /*
   * render page whenever the task is changes, using obs*/
@@ -36,4 +35,11 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
+
+
+  // this allow when create new task, the first selected icon index will be zero
+  final chipIndex = 0.obs;
+  void changeChipIndex(int value) {
+    chipIndex.value = value;
+  }
 }
