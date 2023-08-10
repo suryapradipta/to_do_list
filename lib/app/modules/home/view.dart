@@ -22,20 +22,20 @@ class HomePage extends GetView<HomeController> {
               style: TextStyle(fontSize: 24.0.sp, fontWeight: FontWeight.bold),
             ),
           ),
-          GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics: ClampingScrollPhysics(),
-            children: [
-              AddCard(),
-              TaskCard(
-                task: Task(
-                  title: 'title',
-                  icon: 0xe59c,
-                  color: '#FF2B60E6',
-                ),
-              )
-            ],
+          Obx(
+            () => GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
+              children: [
+                AddCard(),
+                ...controller.tasks
+                    .map((element) => TaskCard(
+                          task: element,
+                        ))
+                    .toList(),
+              ],
+            ),
           ),
         ],
       )),
