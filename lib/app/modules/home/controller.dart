@@ -14,7 +14,6 @@ class HomeController extends GetxController {
   final formKey = GlobalKey<FormState>();
   final editController = TextEditingController();
 
-
   // start
   /*
   * render page whenever the task is changes, using obs*/
@@ -35,11 +34,21 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-
-
   // this allow when create new task, the first selected icon index will be zero
   final chipIndex = 0.obs;
+
   void changeChipIndex(int value) {
     chipIndex.value = value;
+  }
+
+  // submit button method
+  bool addTask(Task task) {
+    // we can do .contains because the model extends Equatable
+    // same color, icon, task
+    if (tasks.contains(task)) {
+      return false;
+    }
+    tasks.add(task);
+    return true;
   }
 }
